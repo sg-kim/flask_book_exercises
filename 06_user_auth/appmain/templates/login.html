@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} {# Transferring CSRF token = secret key #}
+        <div>
+            {{ form.email.label }}
+            {{ form.email }}
+            {% if form.email.errors %}
+            <div>
+                {% for error in form.email.errors%}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password }}
+            {% if form.password.errors %}
+            <div>
+                {% for error in form.password.errors%}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+        <small>
+            <a href="#">Forgot Password?</a>
+        </small>
+    </form>
+</div>
+<div>
+    <small>
+        Need An Account? <a href="{{ url_for('user.register') }}">Sign Up</a>
+    </small>
+</div>
+{% endblock content %}
