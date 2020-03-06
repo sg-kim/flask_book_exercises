@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form method="POST" action="">
+        {{form.hidden_tag()}} {# Transferring CSRF token = secret key #}
+        <div>
+            {{form.password.label()}}
+            {{form.password()}}
+            {%if form.password.errors%}
+                {%for error in form.password.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            {%endif%}
+        </div>
+        <div>
+            {{form.confirmPassword.label()}}
+            {{form.confirmPassword()}}
+            {%if form.confirmPassword.errors%}
+                {%for error in form.confirmPassword.errors%}
+                    <span>{{error}}</span>
+                {%endfor%}
+            {%endif%}
+        </div>
+        <div>
+            {{form.submit()}}
+        </div>
+    </form>
+{% endblock content %}
