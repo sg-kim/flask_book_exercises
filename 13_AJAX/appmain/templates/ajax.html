@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AJAX exercise</title>
+</head>
+<body>
+    <div>
+        <h2 id="name">Mike</h2>
+    </div>
+    <div>
+        <h2 id="age">62</h2>
+    </div>
+    <div>
+        <h2 id="major"></h2>
+    </div>
+    </div>
+        <button id="sendDataButton">Send data</button>
+    </div>
+    <script>
+        var sendDataButton = document.getElementById("sendDataButton");
+
+        sendDataButton.addEventListener("click", function(){
+            var name = document.getElementById("name").innerHTML;
+            var age = document.getElementById("age").innerHTML;
+            var major = document.getElementById("major").innerHTML;
+
+            var args = JSON.stringify({'name':name, 'age':age, 'major':major});
+
+            var ajaxRequest = new XMLHttpRequest();
+            ajaxRequest.open('POST', '/ajax/request');
+            ajaxRequest.onload = function(){
+                var resData = JSON.parse(ajaxRequest.responseText);
+                var major = document.getElementById("major");
+                major.innerHTML = resData['major'];
+            };
+            ajaxRequest.setRequestHeader('Content-type', 'application/json');
+            ajaxRequest.send(args);
+        }, false);
+    </script>
+</body>
+</html>
