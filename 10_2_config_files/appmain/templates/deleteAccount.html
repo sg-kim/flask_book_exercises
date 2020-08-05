@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <p>Username: {{user.username}}</p>
+    <p>User email: {{user.useremail}}</p>
+    <form method="POST" action="">
+        {{form.hidden_tag()}} {# Transferring CSRF token = secret key #}
+        {{form.password}}
+        <p>Confirm deletion?</p>
+        {{form.submit}}
+    </form>
+</div>
+{% endblock content %}
