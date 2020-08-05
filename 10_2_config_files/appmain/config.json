@@ -1,7 +1,0 @@
-{
-  "SECRET_KEY": "d2eb5380841f5fdc4b70bb3e8be4a614",
-  "DB_USERNAME": "flaskweb",
-  "DB_PASSWORD": "your_password",
-  "MAIL_USERNAME": "your_account",
-  "MAIL_PASSWORD": "your_password"
-}
