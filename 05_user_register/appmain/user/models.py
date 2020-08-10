@@ -1,5 +1,9 @@
-from appmain import db
+from appmain import db, loginManager
 from flask_login import UserMixin
+
+@loginManager.user_loader
+def load_user(userId):
+        return Userdata.query.get(int(userId))
 
 class Userdata(db.Model, UserMixin):
         id = db.Column(db.Integer, primary_key=True)
